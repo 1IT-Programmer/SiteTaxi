@@ -3,15 +3,17 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_bcrypt import Bcrypt
 from flask_login import LoginManager, UserMixin, login_user, logout_user, current_user, login_required
 from forms import RegistrationForm, LoginForm, BookingForm
+from config import Config
+from routes import *
 import os
 
 # Создание экземпляра приложения
 app = Flask(__name__)
-
+app.config.from_object(Config)
 # Конфигурация секретного ключа и настройки подключения к базе данных SQLite
-basedir = os.path.abspath(os.path.dirname(__file__))
-app.config['SECRET_KEY'] = 'your_secret_key'
-app.config['SQLALCHEMY_DATABASE_URI'] = f'sqlite:///{os.path.join(basedir, "transport.db")}'
+#basedir = os.path.abspath(os.path.dirname(__file__))
+#app.config['SECRET_KEY'] = 'your_secret_key'
+#app.config['SQLALCHEMY_DATABASE_URI'] = f'sqlite:///{os.path.join(basedir, "transport.db")}'
 db = SQLAlchemy(app)
 bcrypt = Bcrypt(app)
 login_manager = LoginManager(app)
