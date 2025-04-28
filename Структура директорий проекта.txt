@@ -1,0 +1,11 @@
+my_transport_site/
+│
+├── app.py          # Основной файл приложения
+├── forms.py        # Модели форм для ввода данных
+├── models.py       # Модели данных (пользователи, бронирование)
+└── templates/      # Шаблоны HTML для представления страниц
+    ├── base.html
+    ├── index.html
+    ├── login.html
+    ├── register.html
+    └── booking.html
