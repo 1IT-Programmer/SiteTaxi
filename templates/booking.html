@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block title %}Book Your Trip{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-6 col-lg-4">
+        <h2 class="mb-4">Book Your Trip</h2>
+        
+        {% with messages = get_flashed_messages(with_categories=true) %}
+          {% if messages %}
+            {% for category, message in messages %}
+              <div class="alert alert-{{ category }} mb-4" role="alert">
+                {{ message }}
+              </div>
+            {% endfor %}
+          {% endif %}
+        {% endwith %}
+        
+        <form method="post">
+            {{ form.hidden_tag() }}
+            
+            <div class="mb-3">
+                {{ form.departure_point.label(class_="form-label") }}
+                {{ form.departure_point(class_="form-control") }}
+            </div>
+            
+            <div class="mb-3">
+                {{ form.destination_point.label(class_="form-label") }}
+                {{ form.destination_point(class_="form-control") }}
+            </div>
+            
+            <div class="mb-3">
+                {{ form.date_time.label(class_="form-label") }}
+                {{ form.date_time(class_="form-control") }}
+            </div>
+            
+            <button type="submit" class="btn btn-success">Book Now</button>
+        </form>
+    </div>
+</div>
+{% endblock %}
